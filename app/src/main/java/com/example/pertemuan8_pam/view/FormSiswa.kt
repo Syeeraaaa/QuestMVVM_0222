@@ -2,8 +2,12 @@ package com.example.pertemuan8_pam.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -22,6 +26,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+
+
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -40,7 +46,7 @@ fun FormSiswa(
     val listData: MutableList<String> = mutableListOf(txtNama,txtGender, txtAlamat)
 
     Scaffold(modifier = Modifier,
-        { TopAppBar(title = { Text (stringResource(id = R.string.app_name), color = color.White)},
+        { TopAppBar(title = { Text (stringResource(id = R.string.app_name), color = Color.White)},
             colors = TopAppBarDefaults.mediumTopAppBarColors(colorResource(id = R.color.purple_500))
         )
         }) { isiRuang ->
@@ -77,6 +83,14 @@ fun FormSiswa(
                     txtAlamat = it
                 }
             )
+            Spacer(modifier = Modifier.height(20.dp))
+            Button(
+                modifier = Modifier.fillMaxWidth(1f),
+                enabled = txtAlamat.isNotEmpty(),
+                onClick = {onSubmitButtonClicked(listData)}
+            ) {
+                Text(stringResource(R.string.submit))
+            }
         }
     }
 }
