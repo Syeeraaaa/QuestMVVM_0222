@@ -49,11 +49,14 @@ fun SiswaApp(
                 TampilSiswa(
                     statusUiSiswa = uiState.value,
                     onBackButtonClicked = {
-                        cancelAndBackToFormulir(navController)
-                    }
+                        cancelAndBackToFormulir(navController) }
                 )
             }
         }
     }
 }
-
+private fun cancelAndBackToFormulir(
+    navController: NavHostController
+){
+    navController.popBackStack(Navigasi.Formulir.name, inclusive = false)
+}
